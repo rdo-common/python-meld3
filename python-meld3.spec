@@ -2,7 +2,7 @@
 Summary: HTML/XML templating system for Python
 Name: python-meld3
 Version: 0.6.7
-Release: 4%{?dist}
+Release: 5%{?dist}
 
 License: ZPLv2.1
 Group: Development/Languages
@@ -54,6 +54,9 @@ rm -rf %{buildroot}
 %{python_sitearch}/*
 
 %changelog
+* Tue Jan 10 2012 Nils Philippsen <nils@redhat.com> - 0.6.7-5
+- rebuild for gcc 4.7
+
 * Tue Apr 05 2011 Nils Philippsen - 0.6.7-4
 - patch in missing cmeld3.c file instead of indiscriminately (over-)writing it
 - don't use macros for system executables (except python)
