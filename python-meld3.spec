@@ -2,7 +2,7 @@
 Summary: HTML/XML templating system for Python
 Name: python-meld3
 Version: 0.6.7
-Release: 8%{?dist}
+Release: 9%{?dist}
 
 License: ZPLv2.1
 Group: Development/Languages
@@ -54,6 +54,9 @@ rm -rf %{buildroot}
 %{python_sitearch}/*
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.7-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.7-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
