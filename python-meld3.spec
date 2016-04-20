@@ -4,7 +4,7 @@ Name: python-meld3
 Version: 1.0.2
 Release: 1%{?dist}
 
-License: ZPLv2.1
+License: BSD
 Group: Development/Languages
 URL: https://github.com/Supervisor/meld3
 Source0: http://pypi.python.org/packages/source/m/meld3/meld3-%{version}.tar.gz
@@ -41,6 +41,7 @@ rm -rf %{buildroot}
 %changelog
 * Wed Apr 20 2016 Nils Philippsen <nils@redhat.com> - 1.0.2-1
 - version 1.0.2
+- change license to BSD
 
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.7-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
