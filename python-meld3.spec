@@ -1,49 +1,34 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 Summary: HTML/XML templating system for Python
 Name: python-meld3
-Version: 0.6.7
-Release: 12%{?dist}
+Version: 1.0.2
+Release: 1%{?dist}
 
 License: ZPLv2.1
 Group: Development/Languages
-URL: http://www.plope.com/software/meld3/
+URL: https://github.com/Supervisor/meld3
 Source0: http://pypi.python.org/packages/source/m/meld3/meld3-%{version}.tar.gz
-# The current meld3 tarball leaves this out by mistake
-# https://github.com/Supervisor/meld3/raw/0.6.7/meld3/cmeld3.c -- AKA:
-# https://github.com/Supervisor/meld3/raw/bafd959fc2e389f46786a6b3174d50f9963fe967/meld3/cmeld3.c
-Patch0: python-meld3-0.6.7-missing-src-file.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-
-%if 0%{?rhel} && 0%{?rhel} <= 5
-BuildRequires:  python-elementtree
-Requires: python-elementtree
-%endif
 
 BuildRequires: python-devel
 
 
 %description
-meld3 is an HTML/XML templating system for Python 2.3+ which keeps template
+meld3 is an HTML/XML templating system for Python 2.5+ which keeps template
 markup and dynamic rendering logic separate from one another. See
 http://www.entrian.com/PyMeld for a treatise on the benefits of this pattern.
 
 %prep
 %setup -q -n meld3-%{version}
-%patch0 -p1 -b .missing-src-file
 
 %build
-export USE_MELD3_EXTENSION_MODULES=True
-CFLAGS="%{optflags}" %{__python} setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf %{buildroot}
-export USE_MELD3_EXTENSION_MODULES=True
 %{__python} setup.py install --skip-build --root %{buildroot}
-sed -i s'/^#!.*//' $( find %{buildroot}/%{python_sitearch}/meld3/ -type f)
-chmod 0755 %{buildroot}/%{python_sitearch}/meld3/cmeld3.so
 
 %check
-%{__python} meld3/test_meld3.py
+%{__python} setup.py test
 
 %clean
 rm -rf %{buildroot}
@@ -54,6 +39,9 @@ rm -rf %{buildroot}
 %{python_sitearch}/*
 
 %changelog
+* Wed Apr 20 2016 Nils Philippsen <nils@redhat.com> - 1.0.2-1
+- version 1.0.2
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.7-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
