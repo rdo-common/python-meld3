@@ -1,4 +1,3 @@
-%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 Summary: HTML/XML templating system for Python
 Name: python-meld3
 Version: 1.0.2
@@ -10,7 +9,7 @@ URL: https://github.com/Supervisor/meld3
 Source0: http://pypi.python.org/packages/source/m/meld3/meld3-%{version}.tar.gz
 
 BuildRequires: python-devel
-
+BuildArch: noarch
 
 %description
 meld3 is an HTML/XML templating system for Python 2.5+ which keeps template
@@ -36,12 +35,13 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc README.txt COPYRIGHT.txt LICENSE.txt CHANGES.txt
-%{python_sitearch}/*
+%{python2_sitelib}/*
 
 %changelog
 * Wed Apr 20 2016 Nils Philippsen <nils@redhat.com> - 1.0.2-1
 - version 1.0.2
 - change license to BSD
+- package is noarch now
 
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.7-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
