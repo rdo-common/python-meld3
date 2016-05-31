@@ -9,7 +9,7 @@ Release: 1%{?dist}
 License: BSD
 Group: Development/Languages
 URL: https://github.com/Supervisor/%{srcname}
-Source0: http://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
+Source0: https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires: python2-devel python3-devel
 BuildArch: noarch
