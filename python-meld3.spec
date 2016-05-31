@@ -9,7 +9,7 @@ Release: 1%{?dist}
 License: BSD
 Group: Development/Languages
 URL: https://github.com/Supervisor/%{srcname}
-Source0: http://pypi.python.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
+Source0: http://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires: python2-devel python3-devel
 BuildArch: noarch
@@ -72,6 +72,9 @@ rm -rf %{buildroot}
 %{python3_sitelib}/*
 
 %changelog
+* Tue May 31 2016 Nils Philippsen <nils@redhat.com>
+- fix source URL
+
 * Wed Apr 20 2016 Nils Philippsen <nils@redhat.com> - 1.0.2-1
 - version 1.0.2
 - change license to BSD
