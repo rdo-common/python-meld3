@@ -4,7 +4,7 @@
 Summary: %{sum}
 Name: python-%{srcname}
 Version: 1.0.2
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 License: BSD
 Group: Development/Languages
@@ -72,6 +72,9 @@ rm -rf %{buildroot}
 %{python3_sitelib}/*
 
 %changelog
+* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.0.2-3
 - Rebuild for Python 3.6
 
