@@ -1,6 +1,10 @@
 %global srcname meld3
 %global sum HTML/XML templating system for Python
 
+%if 0%{?fedora}
+%global with_python3 1
+%endif
+
 Summary: %{sum}
 Name: python-%{srcname}
 Version: 1.0.2
@@ -11,7 +15,8 @@ Group: Development/Languages
 URL: https://github.com/Supervisor/%{srcname}
 Source0: https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
 
-BuildRequires: python2-devel python3-devel
+BuildRequires: python2-devel
+BuildRequires: python-setuptools
 BuildArch: noarch
 
 %description
@@ -34,29 +39,39 @@ Requires: %{name} = %{version}-%{release}
 template markup and dynamic rendering logic separate from one another.
 
 
+%if 0%{?with_python3}
 %package -n python3-%{srcname}
 Summary:  %{sum}
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
 Requires: %{name} = %{version}-%{release}
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
 %{srcname} is an HTML/XML templating system for Python 3.2+ which keeps
 template markup and dynamic rendering logic separate from one another.
+%endif
 
 %prep
 %setup -q -n %{srcname}-%{version}
 
 %build
 %py2_build
+%if 0%{?with_python3}
 %py3_build
+%endif
 
 %install
 %py2_install
+%if 0%{?with_python3}
 %py3_install
+%endif
 
 %check
 %{__python2} setup.py test
+%if 0%{?with_python3}
 %{__python3} setup.py test
+%endif
 
 %clean
 rm -rf %{buildroot}
@@ -68,8 +83,10 @@ rm -rf %{buildroot}
 %files -n python2-%{srcname}
 %{python2_sitelib}/*
 
+%if 0%{?with_python3}
 %files -n python3-%{srcname}
 %{python3_sitelib}/*
+%endif
 
 %changelog
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-4
